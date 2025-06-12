@@ -6,6 +6,7 @@ npm-debug.log*
 # Files
 node_modules
 dist
+NOTES.md
 
 # Editor directories and files
 .vscode/*
