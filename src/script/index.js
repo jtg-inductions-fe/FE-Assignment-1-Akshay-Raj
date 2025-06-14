@@ -13,12 +13,14 @@ function toggleNavMenu(force = false) {
     if (force) {
         // Close the menu
         toggleMenuIcon.src = '/assets/menu_open.svg';
+        btnToggleMenu.setAttribute('aria-label', 'Open menu');
         linksContainer.classList.toggle('header__links-container--open', false);
         actionsContainer.classList.toggle('header__actions--open', false);
         window.removeEventListener('resize', onWindowResize);
     } else {
         // Open the menu
         toggleMenuIcon.src = '/assets/menu_close.svg';
+        btnToggleMenu.setAttribute('aria-label', 'Close menu');
         linksContainer.classList.toggle('header__links-container--open', true);
         actionsContainer.classList.toggle('header__actions--open', true);
         window.addEventListener('resize', onWindowResize);
@@ -28,7 +30,10 @@ function toggleNavMenu(force = false) {
 function onWindowResize(e) {
     if (e.target.outerWidth >= 1280) {
         // Close the nav menu
+        btnToggleMenu.setAttribute('aria-hidden', 'true');
         toggleNavMenu(true);
+    } else if (btnToggleMenu.getAttribute('aria-hidden') === 'true') {
+        btnToggleMenu.setAttribute('aria-hidden', 'false');
     }
 }
 
