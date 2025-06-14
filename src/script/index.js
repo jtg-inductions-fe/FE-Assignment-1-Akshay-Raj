@@ -6,8 +6,9 @@ const linksContainer = document.querySelector('.header__links-container');
 const actionsContainer = document.querySelector('.header__actions');
 
 /**
- * Function to close the nav menu
- * @param force forcefully close the nav menu
+ * Opens or closes the navigation menu and updates related UI elements.
+ *
+ * @param {boolean} [force=false] - If true, forces the menu to close; if false, opens the menu.
  */
 function toggleNavMenu(force = false) {
     if (force) {
@@ -27,6 +28,13 @@ function toggleNavMenu(force = false) {
     }
 }
 
+/**
+ * Handles window resize events to manage the visibility and accessibility of the navigation menu toggle button.
+ *
+ * If the window width is 1280 pixels or wider, hides the toggle button and closes the navigation menu. If the width drops below 1280 pixels and the toggle button is hidden, it makes the button visible again.
+ *
+ * @param {UIEvent} e - The window resize event.
+ */
 function onWindowResize(e) {
     if (e.target.outerWidth >= 1280) {
         // Close the nav menu
