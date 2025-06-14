@@ -1,1 +1,11 @@
-// TODO: Add styles as per the requirement
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+@use 'base/fonts';
+@use 'base/reset';
+@use 'base/utilities';
+
+@use 'components/button';
+@use 'components/gradient-blob';
+
+@use 'vendor/icomoon';

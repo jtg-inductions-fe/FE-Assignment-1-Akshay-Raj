@@ -1,0 +1,150 @@
+@mixin size($size) {
+    @if $size == full {
+        $size: 100%;
+    }
+    height: $size;
+    width: $size;
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin positioned(
+    $position: absolute,
+    $top: null,
+    $right: null,
+    $bottom: null,
+    $left: null,
+    $z: 0
+) {
+    position: $position;
+    z-index: $z;
+    @if $top == null and $right == null and $bottom == null and $left == null {
+        top: 0;
+        left: 0;
+    } @else {
+        @if $top != null {
+            top: $top;
+        }
+        @if $right != null {
+            right: $right;
+        }
+        @if $bottom != null {
+            bottom: $bottom;
+        }
+        @if $left != null {
+            left: $left;
+        }
+    }
+}
+
+// Media Queries
+// small -> mobile devices
+// medium | large -> tablet devices
+// huge -> desktop | large devices
+@mixin responsive-above(
+    $property,
+    $default,
+    $medium: null,
+    $large: null,
+    $huge: null
+) {
+    #{$property}: $default;
+    @if $medium != null {
+        @include respond-above(medium) {
+            #{$property}: $medium;
+        }
+    }
+    @if $large != null {
+        @include respond-above(large) {
+            #{$property}: $large;
+        }
+    }
+    @if $huge != null {
+        @include respond-above(huge) {
+            #{$property}: $huge;
+        }
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == small {
+        @media screen and (max-width: 480px) {
+            @content;
+        }
+    } @else if $breakpoint == medium {
+        @media screen and (max-width: 768px) {
+            @content;
+        }
+    } @else if $breakpoint == large {
+        @media screen and (max-width: 1279px) {
+            @content;
+        }
+    } @else if $breakpoint == huge {
+        @media screen and (min-width: 1280px) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-above($breakpoint) {
+    @if $breakpoint == small {
+        @content;
+    } @else if $breakpoint == medium {
+        @media screen and (min-width: 481px) {
+            @content;
+        }
+    } @else if $breakpoint == large {
+        @media screen and (min-width: 769px) {
+            @content;
+        }
+    } @else if $breakpoint == huge {
+        @media screen and (min-width: 1280px) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-below($breakpoint) {
+    @if $breakpoint == small {
+        @media screen and (max-width: 480px) {
+            @content;
+        }
+    } @else if $breakpoint == medium {
+        @media screen and (max-width: 768px) {
+            @content;
+        }
+    } @else if $breakpoint == large {
+        @media screen and (max-width: 1279px) {
+            @content;
+        }
+    } @else if $breakpoint == huge {
+        @media screen and (width >= 1280px) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-only-for($breakpoint) {
+    @if $breakpoint == small {
+        @media screen and (max-width: 480px) {
+            @content;
+        }
+    } @else if $breakpoint == medium {
+        @media screen and (480px < width <= 768px) {
+            @content;
+        }
+    } @else if $breakpoint == large {
+        @media screen and (768px < width <= 1279px) {
+            @content;
+        }
+    } @else if $breakpoint == huge {
+        @media screen and (width >= 1280px) {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+// Color Scheme
+$color-primary: #5d50c6;
+$color-secondary: #f85e9f;
+
+$color-on-primary: #ffffff;
+$color-on-secondary: #ffffff;
+
+$color-text-primary: #191825;
+$color-text-secondary: rgba($color-text-primary, 0.75);
+$color-text-tertiary: rgba($color-text-primary, 0.5);
+
+$color-background: #ffffff;
+$color-surface: #ffffff;
+$color-outline: rgba($color-text-primary, 0.1);
+$color-shadow: rgba(0, 0, 0, 0.05);
+
+$color-indicator-active: $color-secondary;
+$color-indicator-inactive: rgba($color-text-primary, 0.05);
+
+$color-newsletter-card: #facd4914;
+
+$color-orange: #ff5722;
+$color-yellow: #facd49;
