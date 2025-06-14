@@ -1,0 +1,143 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.header {
+    @include positioned(fixed, $z: 10);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include responsive-above(
+        padding,
+        $default: 2.5rem 1rem,
+        $large: 2rem 4rem,
+        $huge: 4rem 6rem
+    );
+
+    &__brand-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        @include responsive-above(
+            flex-direction,
+            $default: row,
+            $large: row-reverse
+        );
+    }
+
+    &__logo {
+        @include size(2.5rem);
+        @include respond-above(huge) {
+            margin-right: auto;
+        }
+
+        img {
+            @include size(full);
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    &__toggle {
+        @include size(3rem);
+
+        img {
+            @include size(full);
+            object-fit: contain;
+            user-select: none;
+        }
+
+        @include respond-above(huge) {
+            display: none;
+        }
+    }
+
+    &__nav-container {
+        @include respond-above(large) {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: auto;
+            @include size(full);
+        }
+
+        @include respond-above(huge) {
+            flex-basis: 260%;
+        }
+    }
+
+    &__links-container {
+        display: none;
+
+        @include respond-below(large) {
+            flex-direction: column;
+            gap: 1.1rem;
+            width: 100%;
+            max-width: 280px;
+            @include positioned($top: 6rem, $left: 4rem);
+            padding: 2rem;
+            border-radius: 15px;
+            background: $color-background;
+            box-shadow: 0 5px 30px 0 $color-shadow;
+        }
+
+        @include respond-below(medium) {
+            @include positioned($left: auto, $right: 1rem);
+        }
+
+        @include respond-above(huge) {
+            display: flex;
+            gap: 4rem;
+            margin-right: auto;
+        }
+
+        &--open {
+            display: flex;
+        }
+    }
+
+    &__link {
+        color: $color-text-tertiary;
+        font-size: 0.875rem;
+        font-weight: bold;
+        transition: color 0.3s ease;
+
+        @include respond-below(large) {
+            font-size: 1.1rem;
+        }
+
+        &--active {
+            color: $color-text-primary;
+        }
+
+        &:hover {
+            color: $color-text-primary;
+        }
+    }
+
+    &__actions {
+        display: none;
+
+        @include respond-above(large) {
+            display: flex;
+            align-items: center;
+        }
+
+        @include respond-below(medium) {
+            flex-direction: column;
+            gap: 1.1rem;
+            width: 100%;
+            max-width: 280px;
+            @include positioned($top: 18rem, $right: 1rem);
+            padding: 2rem;
+            border-radius: 0 0 15px 15px;
+            background: $color-background;
+        }
+
+        &--open {
+            display: flex;
+        }
+    }
+}
