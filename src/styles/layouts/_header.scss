@@ -8,7 +8,7 @@
     backdrop-filter: blur(5px);
     @include linear-gradient(
         to bottom,
-        transparentize($color-background, 0.1),
+        transparentize($color-background, 0.05),
         transparent
     );
 
