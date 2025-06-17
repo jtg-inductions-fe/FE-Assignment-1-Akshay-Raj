@@ -1,35 +1,56 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+@use '../layouts/flex' as *;
 
 .header {
-    @include positioned(fixed, $z: 10);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include positioned(absolute);
     width: 100%;
-    @include responsive-above(
-        padding,
-        $default: 2.5rem 1rem,
-        $large: 2rem 4rem,
-        $huge: 4rem 6rem
-    );
+    backdrop-filter: blur(15px);
+    @include linear-gradient(to bottom, $color-background, transparent);
 
-    &__brand-container {
-        display: flex;
+    &__container {
+        @extend %flex;
         align-items: center;
-        justify-content: space-between;
         width: 100%;
 
-        @include responsive-above(
-            flex-direction,
-            $default: row,
-            $large: row-reverse
-        );
+        @include respond-to(sm) {
+            padding: {
+                top: 2.5rem;
+                bottom: 2.5rem;
+            }
+        }
+
+        @include respond-to(md) {
+            padding: {
+                top: 2rem;
+                bottom: 2rem;
+            }
+        }
+
+        @include respond-to(lg) {
+            padding: {
+                top: 4rem;
+                bottom: 4rem;
+            }
+        }
+    }
+
+    &__brand-container {
+        flex: 1;
+        @extend %flex-row-between;
+
+        @include respond-to-range(md, lg) {
+            flex-direction: row-reverse;
+        }
+
+        @include respond-to(lg) {
+            flex: 0.38;
+        }
     }
 
     &__logo {
         @include size(2.5rem);
-        @include respond-above(huge) {
+        @include respond-to(lg) {
             margin-right: auto;
         }
 
@@ -42,59 +63,59 @@
 
     &__toggle {
         @include size(3rem);
+        @include respond-to(lg) {
+            display: none;
+        }
 
         img {
             @include size(full);
             object-fit: contain;
             user-select: none;
         }
-
-        @include respond-above(huge) {
-            display: none;
-        }
     }
 
     &__nav-container {
-        @include respond-above(large) {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-left: auto;
-            @include size(full);
+        @include respond-to(md) {
+            flex: 1;
         }
 
-        @include respond-above(huge) {
-            flex-basis: 260%;
+        @include respond-to(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
     }
 
     &__links-container {
         display: none;
 
-        @include respond-below(large) {
-            flex-direction: column;
-            gap: 1.1rem;
-            width: 100%;
-            max-width: 280px;
-            @include positioned($top: 6rem, $left: 4rem);
-            padding: 2rem;
-            border-radius: 15px;
-            background: $color-background;
-            box-shadow: 0 5px 30px 0 $color-shadow;
+        &--open {
+            display: flex;
         }
 
-        @include respond-below(medium) {
+        @include respond-to-range(sm, lg) {
+            @include positioned($top: 6rem);
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 2rem;
+            width: 100%;
+            max-width: 250px;
+            border-radius: 15px;
+            background: $color-background;
+            box-shadow: 0 5px 15px 0 $color-shadow;
+        }
+
+        @include respond-to-range(sm, md) {
             @include positioned($left: auto, $right: 1rem);
         }
 
-        @include respond-above(huge) {
-            display: flex;
-            gap: 4rem;
-            margin-right: auto;
+        @include respond-to-range(md, lg) {
+            @include positioned($left: 4rem, $right: auto);
         }
 
-        &--open {
+        @include respond-to(lg) {
             display: flex;
+            gap: 4rem;
         }
     }
 
@@ -104,10 +125,6 @@
         font-weight: bold;
         transition: color 0.3s ease;
 
-        @include respond-below(large) {
-            font-size: 1.1rem;
-        }
-
         &--active {
             color: $color-text-primary;
         }
@@ -115,29 +132,36 @@
         &:hover {
             color: $color-text-primary;
         }
+
+        @include respond-to-range(sm, md) {
+            font-size: 1rem;
+        }
     }
 
     &__actions {
         display: none;
 
-        @include respond-above(large) {
+        &--open {
             display: flex;
-            align-items: center;
         }
 
-        @include respond-below(medium) {
+        @include respond-to-range(sm, md) {
+            @include positioned($top: 16.5rem, $right: 1rem);
             flex-direction: column;
-            gap: 1.1rem;
+            gap: 0.5rem;
             width: 100%;
-            max-width: 280px;
-            @include positioned($top: 18rem, $right: 1rem);
+            max-width: 250px;
             padding: 2rem;
-            border-radius: 0 0 15px 15px;
+            padding: {
+                top: 1rem;
+            }
+            border-radius: 0 0 0 15px;
             background: $color-background;
         }
 
-        &--open {
+        @include respond-to(md) {
             display: flex;
+            justify-self: flex-end;
         }
     }
 }

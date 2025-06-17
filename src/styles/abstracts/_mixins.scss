@@ -1,16 +1,11 @@
+@use './variables' as *;
+
 @mixin size($size) {
     @if $size == full {
         $size: 100%;
     }
     height: $size;
     width: $size;
-}
-
-@mixin flex-center($direction: row) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: center;
-    align-items: center;
 }
 
 @mixin positioned(
@@ -23,128 +18,66 @@
 ) {
     position: $position;
     z-index: $z;
+
+    @each $dir, $val in (top: $top, right: $right, bottom: $bottom, left: $left)
+    {
+        @if $val != null {
+            #{$dir}: $val;
+        }
+    }
+
     @if $top == null and $right == null and $bottom == null and $left == null {
         top: 0;
         left: 0;
-    } @else {
-        @if $top != null {
-            top: $top;
-        }
-        @if $right != null {
-            right: $right;
-        }
-        @if $bottom != null {
-            bottom: $bottom;
-        }
-        @if $left != null {
-            left: $left;
+    }
+}
+
+@mixin respond-to($size) {
+    $breakpoint: map-get($breakpoints, $size);
+
+    @if $breakpoint != null {
+        @media screen and (min-width: $breakpoint) {
+            @content;
         }
     }
 }
 
-// Media Queries
-// small -> mobile devices
-// medium | large -> tablet devices
-// huge -> desktop | large devices
-@mixin responsive-above(
-    $property,
-    $default,
-    $medium: null,
-    $large: null,
-    $huge: null
+@mixin respond-to-range($from, $to) {
+    $min: map-get($breakpoints, $from);
+    $max: map-get($breakpoints, $to);
+
+    @if $min != null and $max != null {
+        @media screen and (min-width: $min) and (max-width: $max - 1) {
+            @content;
+        }
+    }
+}
+
+@mixin section-spacing(
+    $sm: (
+        vertical: 0,
+        horizontal: 1rem,
+    ),
+    $md: (
+        vertical: 0,
+        horizontal: 4rem,
+    ),
+    $lg: (
+        vertical: 0,
+        horizontal: 6rem,
+    )
 ) {
-    #{$property}: $default;
-    @if $medium != null {
-        @include respond-above(medium) {
-            #{$property}: $medium;
-        }
+    @include respond-to(sm) {
+        padding: map-get($sm, vertical) map-get($sm, horizontal);
     }
-    @if $large != null {
-        @include respond-above(large) {
-            #{$property}: $large;
-        }
+    @include respond-to(md) {
+        padding: map-get($md, vertical) map-get($md, horizontal);
     }
-    @if $huge != null {
-        @include respond-above(huge) {
-            #{$property}: $huge;
-        }
+    @include respond-to(lg) {
+        padding: map-get($lg, vertical) map-get($lg, horizontal);
     }
 }
 
-@mixin respond-to($breakpoint) {
-    @if $breakpoint == small {
-        @media screen and (max-width: 480px) {
-            @content;
-        }
-    } @else if $breakpoint == medium {
-        @media screen and (max-width: 768px) {
-            @content;
-        }
-    } @else if $breakpoint == large {
-        @media screen and (max-width: 1279px) {
-            @content;
-        }
-    } @else if $breakpoint == huge {
-        @media screen and (min-width: 1280px) {
-            @content;
-        }
-    }
-}
-
-@mixin respond-above($breakpoint) {
-    @if $breakpoint == small {
-        @content;
-    } @else if $breakpoint == medium {
-        @media screen and (min-width: 481px) {
-            @content;
-        }
-    } @else if $breakpoint == large {
-        @media screen and (min-width: 769px) {
-            @content;
-        }
-    } @else if $breakpoint == huge {
-        @media screen and (min-width: 1280px) {
-            @content;
-        }
-    }
-}
-
-@mixin respond-below($breakpoint) {
-    @if $breakpoint == small {
-        @media screen and (max-width: 480px) {
-            @content;
-        }
-    } @else if $breakpoint == medium {
-        @media screen and (max-width: 768px) {
-            @content;
-        }
-    } @else if $breakpoint == large {
-        @media screen and (max-width: 1279px) {
-            @content;
-        }
-    } @else if $breakpoint == huge {
-        @media screen and (width >= 1280px) {
-            @content;
-        }
-    }
-}
-
-@mixin respond-only-for($breakpoint) {
-    @if $breakpoint == small {
-        @media screen and (max-width: 480px) {
-            @content;
-        }
-    } @else if $breakpoint == medium {
-        @media screen and (480px < width <= 768px) {
-            @content;
-        }
-    } @else if $breakpoint == large {
-        @media screen and (768px < width <= 1279px) {
-            @content;
-        }
-    } @else if $breakpoint == huge {
-        @media screen and (width >= 1280px) {
-            @content;
-        }
-    }
+@mixin linear-gradient($direction, $colors...) {
+    background-image: linear-gradient($direction, $colors...);
 }

@@ -23,14 +23,14 @@
         transparent
     );
 
-    @include respond-above(large) {
+    @include respond-to(md) {
         --hero-blob-size: 35rem;
         --hero-blob-top: -10rem;
         --hero-blob-left: -10rem;
         --hero-blob-opacity: 0.4;
     }
 
-    @include respond-above(huge) {
+    @include respond-to(lg) {
         --hero-blob-size: 50rem;
         --hero-blob-top: -8rem;
         --hero-blob-left: -15rem;

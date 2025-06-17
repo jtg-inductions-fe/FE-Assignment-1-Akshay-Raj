@@ -1,5 +1,6 @@
 import '../styles/main.scss';
 
+const headerContainer = document.querySelector('.header__container');
 const btnToggleMenu = document.getElementById('btn-toggle-menu');
 const toggleMenuIcon = btnToggleMenu.querySelector('img');
 const linksContainer = document.querySelector('.header__links-container');
@@ -36,6 +37,16 @@ function onWindowResize(e) {
         btnToggleMenu.setAttribute('aria-hidden', 'false');
     }
 }
+
+function onWindowScroll() {
+    const pageY = window.scrollY;
+    headerContainer.classList.toggle(
+        'header__container--scrolled-up',
+        pageY >= headerContainer.clientHeight * 0.5,
+    );
+}
+
+window.addEventListener('scroll', onWindowScroll);
 
 // Toggle nav menu
 btnToggleMenu.addEventListener('click', () => {
