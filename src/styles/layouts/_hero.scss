@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.hero {
+    position: relative;
+    width: 100%;
+
+    &__image {
+        width: 100%;
+        overflow: hidden;
+    }
+}
