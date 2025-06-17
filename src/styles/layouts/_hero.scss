@@ -178,6 +178,19 @@
     }
 
     .triangle-vector {
-        @include positioned();
+        display: none;
+
+        @include respond-to(md) {
+            display: block;
+            @include positioned($bottom: 18.5rem, $left: 2rem);
+            height: 12rem;
+            aspect-ratio: 19/56;
+            background: url('/assets/triangles.svg') no-repeat;
+            background-size: contain;
+        }
+
+        @include respond-to(lg) {
+            @include positioned($bottom: 5rem);
+        }
     }
 }
