@@ -203,7 +203,7 @@
         @include respond-to(md) {
             display: flex;
             flex-direction: row;
-            justify-self: flex-end;
+            margin-left: auto;
             gap: 0;
             position: static;
             inset: 0;
