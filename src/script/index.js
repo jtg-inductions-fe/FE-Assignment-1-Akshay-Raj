@@ -2,7 +2,7 @@ import '../styles/main.scss';
 
 const headerContainer = document.querySelector('.header__container');
 const btnToggleMenu = document.getElementById('btn-toggle-menu');
-const toggleMenuIcon = btnToggleMenu.querySelector('.icon-menu');
+const toggleMenuIcon = btnToggleMenu?.querySelector('.icon-menu');
 const linksContainer = document.querySelector('.header__links-container');
 const actionsContainer = document.querySelector('.header__actions');
 
@@ -17,6 +17,14 @@ let isMenuOpen = false;
  * @returns {void}
  */
 function toggleNavMenu() {
+    if (
+        !btnToggleMenu ||
+        !toggleMenuIcon ||
+        !linksContainer ||
+        !actionsContainer
+    )
+        return;
+
     isMenuOpen = !isMenuOpen;
 
     btnToggleMenu.setAttribute('aria-expanded', isMenuOpen.toString());
@@ -41,7 +49,4 @@ window.addEventListener('scroll', () => {
     );
 });
 
-// Toggle nav menu
-btnToggleMenu.addEventListener('click', () => {
-    toggleNavMenu();
-});
+btnToggleMenu?.addEventListener('click', toggleNavMenu);
