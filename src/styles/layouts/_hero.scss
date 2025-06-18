@@ -1,3 +1,10 @@
+/**
+ * Hero Styles - _hero.scss
+ *
+ * This file defines the styles for the hero section,
+ * including layout, and responsive behavior.
+ */
+
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
@@ -6,11 +13,16 @@
     width: 100%;
 
     &__container {
-        @extend %flex-column-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
         padding: {
             top: 7rem;
             bottom: 3rem;
         }
+
+        @include section-spacing;
 
         @include respond-to(md) {
             padding-top: 5rem;
@@ -22,7 +34,9 @@
     }
 
     &__content-container {
-        @extend %flex-column-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         width: 100%;
         gap: 1.75rem;
 
@@ -46,13 +60,17 @@
 
         img {
             @include size(full);
+
             object-fit: contain;
             user-select: none;
         }
     }
 
     &__text-content {
-        @extend %flex-column-center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
 
         @include respond-to(md) {
@@ -66,8 +84,10 @@
         }
     }
 
-    &__super-heading {
-        @extend %flex-row-center;
+    &__overline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 0.8rem;
         padding: 1rem 2rem;
         color: $color-secondary;
@@ -76,7 +96,7 @@
 
         p {
             font-size: 0.875rem;
-            margin-bottom: -0.25rem;
+            margin-bottom: -0.5rem;
         }
 
         i {
@@ -84,13 +104,11 @@
         }
     }
 
-    &__heading {
-        font-size: 2.5rem;
-        line-height: 1.2;
+    &__title {
         margin-top: 1rem;
 
         @include respond-to(md) {
-            font-size: 3.5rem;
+            font-size: $text-6xl;
             max-width: 18ch;
             margin-top: 2.68rem;
         }
@@ -104,24 +122,23 @@
         }
     }
 
-    &__sub-heading {
-        font-size: 1rem;
-        line-height: 1.6;
-        font-family: Inter, sans-serif;
-        color: $color-text-tertiary;
+    &__subtitle {
         margin-top: 1.5rem;
 
         @include respond-to(md) {
-            font-size: 1.125rem;
+            font-size: $text-lg;
             margin-top: 2.68rem;
-            max-width: 38ch;
+            max-width: 42ch;
         }
     }
 
     &__actions {
-        @extend %flex-column-center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1.5rem;
-        margin-top: 2rem;
+        margin-top: 1.875rem;
         width: 100%;
 
         @include respond-to(md) {
@@ -131,13 +148,16 @@
 
         @include respond-to(lg) {
             justify-content: flex-start;
+            margin-top: 3.5rem;
         }
 
         button {
-            @extend %flex-row-center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 0.5rem;
             width: 100%;
-            padding: 1.5rem 2rem;
+            padding: 1.4rem 2rem;
 
             @include respond-to(md) {
                 width: auto;
@@ -147,14 +167,16 @@
     }
 
     &__clients-container {
-        @extend %flex-row-center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
         gap: 2rem;
         width: 100%;
         padding: 4rem 0;
 
         @include respond-to(md) {
-            max-width: map-get($breakpoints, md);
+            max-width: 640px;
         }
 
         @include respond-to(lg) {
@@ -173,6 +195,7 @@
 
         img {
             @include size(full);
+
             object-fit: contain;
         }
     }
@@ -182,7 +205,9 @@
 
         @include respond-to(md) {
             display: block;
-            @include positioned($bottom: 18.5rem, $left: 2rem);
+            position: absolute;
+            left: 2rem;
+            bottom: 18.5rem;
             height: 12rem;
             aspect-ratio: 19/56;
             background: url('/assets/triangles.svg') no-repeat;
@@ -190,7 +215,8 @@
         }
 
         @include respond-to(lg) {
-            @include positioned($bottom: 5rem);
+            position: absolute;
+            bottom: 5rem;
         }
     }
 }
