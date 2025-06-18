@@ -33,6 +33,7 @@ function toggleNavMenu() {
 }
 
 window.addEventListener('scroll', () => {
+    if (!headerContainer) return;
     const pageY = window.scrollY;
     headerContainer.classList.toggle(
         'header__container--scrolled-up',
