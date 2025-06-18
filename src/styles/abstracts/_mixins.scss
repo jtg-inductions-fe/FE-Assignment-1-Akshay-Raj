@@ -34,7 +34,7 @@
             @content;
         }
     } @else {
-        @warn 'Invalid size `#{size}`. Please use one of the available sizes #{map-keys($breakpoints)}';
+        @warn 'Invalid size `#{$size}`. Please use one of the available sizes #{map-keys($breakpoints)}';
     }
 }
 
