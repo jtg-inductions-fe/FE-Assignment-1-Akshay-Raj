@@ -1,0 +1,46 @@
+/**
+ * Typography - _typography.scss
+ *
+ * This file includes all typography (i.e. font styles)
+ * used all over the project.
+ */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+@mixin font-base {
+    font-family: $font-primary;
+    color: $color-text-primary;
+}
+
+@mixin text-btn {
+    font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+}
+
+@mixin text-link {
+    @include font-base;
+
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: $color-text-tertiary;
+
+    @include respond-to(md) {
+        font-size: 1.125rem;
+    }
+}
+
+@mixin text-nav-link {
+    @include text-link;
+
+    @include respond-to(md) {
+        font-size: 1rem;
+    }
+
+    @include respond-to(lg) {
+        font-size: 0.875rem;
+    }
+}

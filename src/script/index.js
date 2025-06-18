@@ -2,56 +2,45 @@ import '../styles/main.scss';
 
 const headerContainer = document.querySelector('.header__container');
 const btnToggleMenu = document.getElementById('btn-toggle-menu');
-const toggleMenuIcon = btnToggleMenu.querySelector('img');
+const toggleMenuIcon = btnToggleMenu.querySelector('.icon-menu');
 const linksContainer = document.querySelector('.header__links-container');
 const actionsContainer = document.querySelector('.header__actions');
 
+let isMenuOpen = false;
+
 /**
- * Function to close the nav menu
- * @param force forcefully close the nav menu
+ * Toggles the navigation menu's visibility.
+ *
+ * This function updates the menu's state, toggles the menu icon,
+ * and updates the aria attributes for accessibility.
+ *
+ * @returns {void}
  */
-function toggleNavMenu(force = false) {
-    if (force) {
-        // Close the menu
-        toggleMenuIcon.src = '/assets/menu_open.svg';
-        btnToggleMenu.setAttribute('aria-label', 'Open menu');
-        linksContainer.classList.toggle('header__links-container--open', false);
-        actionsContainer.classList.toggle('header__actions--open', false);
-        window.removeEventListener('resize', onWindowResize);
-    } else {
-        // Open the menu
-        toggleMenuIcon.src = '/assets/menu_close.svg';
-        btnToggleMenu.setAttribute('aria-label', 'Close menu');
-        linksContainer.classList.toggle('header__links-container--open', true);
-        actionsContainer.classList.toggle('header__actions--open', true);
-        window.addEventListener('resize', onWindowResize);
-    }
+function toggleNavMenu() {
+    isMenuOpen = !isMenuOpen;
+
+    btnToggleMenu.setAttribute('aria-expanded', isMenuOpen.toString());
+    toggleMenuIcon.classList.toggle('icon-menu--open', !isMenuOpen);
+    toggleMenuIcon.classList.toggle('icon-menu--close', isMenuOpen);
+
+    linksContainer.setAttribute('aria-hidden', (!isMenuOpen).toString());
+    linksContainer.classList.toggle(
+        'header__links-container--open',
+        isMenuOpen,
+    );
+    actionsContainer.setAttribute('aria-hidden', (!isMenuOpen).toString());
+    actionsContainer.classList.toggle('header__actions--open', isMenuOpen);
 }
 
-function onWindowResize(e) {
-    if (e.target.outerWidth >= 1280) {
-        // Close the nav menu
-        btnToggleMenu.setAttribute('aria-hidden', 'true');
-        toggleNavMenu(true);
-    } else if (btnToggleMenu.getAttribute('aria-hidden') === 'true') {
-        btnToggleMenu.setAttribute('aria-hidden', 'false');
-    }
-}
-
-function onWindowScroll() {
+window.addEventListener('scroll', () => {
     const pageY = window.scrollY;
     headerContainer.classList.toggle(
         'header__container--scrolled-up',
         pageY >= headerContainer.clientHeight * 0.5,
     );
-}
-
-window.addEventListener('scroll', onWindowScroll);
+});
 
 // Toggle nav menu
 btnToggleMenu.addEventListener('click', () => {
-    const isOpen = linksContainer.classList.contains(
-        'header__links-container--open',
-    );
-    toggleNavMenu(isOpen);
+    toggleNavMenu();
 });

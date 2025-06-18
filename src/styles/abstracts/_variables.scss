@@ -1,18 +1,24 @@
-// Color Scheme
+/**
+ * Variables - _variables.scss
+ *
+ * This file defines the color scheme and breakpoints used throughout the project.
+ */
+
+/* Color Scheme */
 $color-primary: #5d50c6;
 $color-secondary: #f85e9f;
 
-$color-on-primary: #ffffff;
-$color-on-secondary: #ffffff;
+$color-on-primary: #fff;
+$color-on-secondary: #fff;
 
 $color-text-primary: #191825;
 $color-text-secondary: rgba($color-text-primary, 0.75);
 $color-text-tertiary: rgba($color-text-primary, 0.5);
 
-$color-background: #ffffff;
-$color-surface: #ffffff;
+$color-background: #fff;
+$color-surface: #fff;
 $color-outline: rgba($color-text-primary, 0.1);
-$color-shadow: rgba(0, 0, 0, 0.05);
+$color-shadow: rgb(0 0 0 / 5%);
 
 $color-indicator-active: $color-secondary;
 $color-indicator-inactive: rgba($color-text-primary, 0.05);
@@ -22,8 +28,16 @@ $color-newsletter-card: #facd4914;
 $color-orange: #ff5722;
 $color-yellow: #facd49;
 
+$color-error: #b3261e;
+$color-warning: #ffbc11;
+
+/* Font families */
+$font-primary: 'Circular Std', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+/* Breakpoints for media query */
 $breakpoints: (
     sm: 0,
-    md: 641px,
-    lg: 1025px,
+    md: 40.0625rem,
+    lg: 64.025rem,
 );

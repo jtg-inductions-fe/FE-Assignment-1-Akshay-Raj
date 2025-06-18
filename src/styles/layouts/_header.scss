@@ -1,22 +1,35 @@
+/**
+ * Header Styles - _header.scss
+ *
+ * This file defines the styles for the header component,
+ * including layout, navigation, and responsive behavior.
+ */
+
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
-@use '../layouts/flex' as *;
+@use '../base/typography' as *;
 
 .header {
-    @include positioned(fixed, $z: 15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
     width: 100%;
     backdrop-filter: blur(5px);
-    @include linear-gradient(
+    background: linear-gradient(
         to bottom,
         transparentize($color-background, 0.05),
         transparent
     );
 
     &__container {
-        @extend %flex;
+        display: flex;
+        justify-content: center;
         align-items: center;
         width: 100%;
         transition: padding 0.3s ease-in-out;
+
+        @include section-spacing;
 
         @include respond-to(sm) {
             padding: {
@@ -48,41 +61,51 @@
     }
 
     &__brand-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         flex: 1;
-        @extend %flex-row-between;
 
-        @include respond-to-range(md, lg) {
+        @include respond-to(md) {
+            flex: 1.1;
             flex-direction: row-reverse;
         }
 
         @include respond-to(lg) {
             flex: 0.38;
+            flex-direction: row;
         }
     }
 
     &__logo {
         @include size(2.5rem);
+
         @include respond-to(lg) {
             margin-right: auto;
         }
 
         img {
             @include size(full);
+
             object-fit: contain;
             user-select: none;
         }
     }
 
     &__toggle {
-        @include size(3rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include size(2.7rem);
+
+        font-size: 1.2rem;
+        color: $color-on-primary;
+        border-radius: 0.7em;
+        background: $color-primary;
+
         @include respond-to(lg) {
             display: none;
-        }
-
-        img {
-            @include size(full);
-            object-fit: contain;
-            user-select: none;
         }
     }
 
@@ -99,43 +122,47 @@
     }
 
     &__links-container {
+        position: absolute;
+        top: 6rem;
+        left: auto;
+        right: 1rem;
         display: none;
+        flex-direction: column;
+        gap: 0.9rem;
+        padding: 2rem;
+        width: 100%;
+        max-width: 250px;
+        border-radius: 15px;
+        background: $color-background;
+        box-shadow: 0 5px 15px 0 $color-shadow;
 
         &--open {
             display: flex;
         }
 
-        @include respond-to-range(sm, lg) {
-            @include positioned($top: 6rem);
-            flex-direction: column;
-            gap: 0.8rem;
-            padding: 2rem;
-            width: 100%;
-            max-width: 250px;
-            border-radius: 15px;
-            background: $color-background;
-            box-shadow: 0 5px 15px 0 $color-shadow;
-        }
-
-        @include respond-to-range(sm, md) {
-            @include positioned($left: auto, $right: 1rem);
-        }
-
-        @include respond-to-range(md, lg) {
-            @include positioned($left: 4rem, $right: auto);
+        @include respond-to(md) {
+            left: 4rem;
+            right: auto;
         }
 
         @include respond-to(lg) {
+            position: static;
+            inset: 0;
             display: flex;
+            flex-direction: row;
             gap: 4rem;
+            padding: 0;
+            max-width: fit-content;
+            border-radius: 0;
+            background: none;
+            box-shadow: none;
         }
     }
 
     &__link {
-        color: $color-text-tertiary;
-        font-size: 0.875rem;
-        font-weight: bold;
         transition: color 0.3s ease;
+
+        @include text-nav-link;
 
         &--active {
             color: $color-text-primary;
@@ -144,36 +171,40 @@
         &:hover {
             color: $color-text-primary;
         }
-
-        @include respond-to-range(sm, md) {
-            font-size: 1rem;
-        }
     }
 
     &__actions {
+        position: absolute;
+        top: 16.5rem;
+        right: 1rem;
         display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        max-width: 250px;
+        padding: 2rem;
+        padding: {
+            top: 1rem;
+        }
+
+        border-radius: 0 0 0 15px;
+        background: $color-background;
 
         &--open {
             display: flex;
         }
 
-        @include respond-to-range(sm, md) {
-            @include positioned($top: 16.5rem, $right: 1rem);
-            flex-direction: column;
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 250px;
-            padding: 2rem;
-            padding: {
-                top: 1rem;
-            }
-            border-radius: 0 0 0 15px;
-            background: $color-background;
-        }
-
         @include respond-to(md) {
             display: flex;
+            flex-direction: row;
             justify-self: flex-end;
+            gap: 0;
+            position: static;
+            inset: 0;
+            max-width: fit-content;
+            padding: 0;
+            border-radius: 0;
+            background: none;
         }
     }
 }

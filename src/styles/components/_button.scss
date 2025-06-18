@@ -1,11 +1,17 @@
+/**
+ * Button Styles - _button.scss
+ *
+ * This file defines styles for the button component,
+ * including primary, secondary, and tertiary variations.
+*/
+
 @use '../abstracts/variables' as *;
+@use '../base/typography' as *;
 
 .btn {
-    font-size: 0.875rem;
-    font-weight: bold;
-    line-height: 1.2;
-    text-align: center;
-    padding: 1rem 2rem;
+    @include text-btn;
+
+    padding: 1.1em 2.25em;
     background: transparent;
     cursor: pointer;
 

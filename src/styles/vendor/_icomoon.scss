@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('fonts/icomoon.woff?y6c8qv') format('woff');
+    src: url('fonts/Icomoon.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -22,30 +22,58 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-message:before {
+.icon-twitter:before {
+    content: '\e90b';
+}
+
+.icon-facebook:before {
+    content: '\e90c';
+}
+
+.icon-instagram:before {
+    content: '\e90d';
+}
+
+.icon-menu--close::before {
+    content: '\e909';
+}
+
+.icon-menu--open::before {
+    content: '\e90a';
+}
+
+.icon-message::before {
     content: '\e900';
 }
-.icon-arrow-left:before {
+
+.icon-arrow-left::before {
     content: '\e901';
 }
-.icon-arrow-right:before {
+
+.icon-arrow-right::before {
     content: '\e902';
 }
-.icon-calendar:before {
+
+.icon-calendar::before {
     content: '\e903';
 }
-.icon-location:before {
+
+.icon-location::before {
     content: '\e904';
 }
-.icon-ticket:before {
+
+.icon-ticket::before {
     content: '\e905';
 }
-.icon-add-user:before {
+
+.icon-add-user::before {
     content: '\e906';
 }
-.icon-send:before {
+
+.icon-send::before {
     content: '\e907';
 }
-.icon-work:before {
+
+.icon-work::before {
     content: '\e908';
 }

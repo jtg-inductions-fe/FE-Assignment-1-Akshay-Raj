@@ -1,3 +1,9 @@
+/**
+ * Utilities - _utilities.scss
+ *
+ * This file defines utility classes for common styling patterns and layouts.
+ */
+
 @use '../abstracts/mixins' as *;
 
 .size-full {
@@ -10,5 +16,4 @@
     max-width: 90rem;
     margin-left: auto;
     margin-right: auto;
-    @include section-spacing();
 }

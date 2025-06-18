@@ -14,16 +14,16 @@
                         <img src="/assets/logo.svg" alt="Travlog logo" />
                     </a>
                     <button
-                        aria-hidden="true"
                         id="btn-toggle-menu"
                         class="header__toggle"
-                        aria-label="menu toggle button"
+                        aria-label="open menu"
+                        aria-expanded="false"
                     >
-                        <img src="/assets/menu_open.svg" alt="Menu" />
+                        <i class="icon-menu icon-menu--open"></i>
                     </button>
                 </div>
                 <nav class="header__nav-container">
-                    <div class="header__links-container">
+                    <div class="header__links-container" aria-hidden="true">
                         <a
                             class="header__link header__link--active"
                             href="/home"
@@ -35,7 +35,7 @@
                         >
                         <a class="header__link" href="/contact">Contact</a>
                     </div>
-                    <div class="header__actions">
+                    <div class="header__actions" aria-hidden="true">
                         <a class="btn btn--tertiary" href="/login">Login</a>
                         <a class="btn btn--primary" href="/signup">Sign Up</a>
                     </div>

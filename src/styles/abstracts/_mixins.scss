@@ -1,37 +1,31 @@
+/**
+ * Mixins - _mixins.scss
+ *
+ * This file defines reusable mixins for common styling patterns,
+ * including responsive sizing and section spacing.
+ */
+
 @use './variables' as *;
 
+/**
+ * Creates height and width properties.
+ *
+ * @param {Keyword | Length} $size - The size value. Use `full` for 100%.
+ */
 @mixin size($size) {
     @if $size == full {
         $size: 100%;
     }
+
     height: $size;
     width: $size;
 }
 
-@mixin positioned(
-    $position: absolute,
-    $top: null,
-    $right: null,
-    $bottom: null,
-    $left: null,
-    $z: 0
-) {
-    position: $position;
-    z-index: $z;
-
-    @each $dir, $val in (top: $top, right: $right, bottom: $bottom, left: $left)
-    {
-        @if $val != null {
-            #{$dir}: $val;
-        }
-    }
-
-    @if $top == null and $right == null and $bottom == null and $left == null {
-        top: 0;
-        left: 0;
-    }
-}
-
+/**
+ * Creates a media query based on the defined breakpoints.
+ *
+ * @param {String} $size - The breakpoint size (sm, md, lg).
+ */
 @mixin respond-to($size) {
     $breakpoint: map-get($breakpoints, $size);
 
@@ -39,45 +33,34 @@
         @media screen and (min-width: $breakpoint) {
             @content;
         }
+    } @else {
+        @warn 'Invalid size `#{size}`. Please use one of the available sizes #{map-keys($breakpoints)}';
     }
 }
 
-@mixin respond-to-range($from, $to) {
-    $min: map-get($breakpoints, $from);
-    $max: map-get($breakpoints, $to);
-
-    @if $min != null and $max != null {
-        @media screen and (min-width: $min) and (max-width: $max - 1) {
-            @content;
+/**
+ * Adds consistent left and right padding to elements for
+ * section spacing based on different breakpoints.
+ */
+@mixin section-spacing {
+    @include respond-to(sm) {
+        padding: {
+            left: 1rem;
+            right: 1rem;
         }
     }
-}
 
-@mixin section-spacing(
-    $sm: (
-        vertical: 0,
-        horizontal: 1rem,
-    ),
-    $md: (
-        vertical: 0,
-        horizontal: 4rem,
-    ),
-    $lg: (
-        vertical: 0,
-        horizontal: 6rem,
-    )
-) {
-    @include respond-to(sm) {
-        padding: map-get($sm, vertical) map-get($sm, horizontal);
-    }
     @include respond-to(md) {
-        padding: map-get($md, vertical) map-get($md, horizontal);
+        padding: {
+            left: 4rem;
+            right: 4rem;
+        }
     }
-    @include respond-to(lg) {
-        padding: map-get($lg, vertical) map-get($lg, horizontal);
-    }
-}
 
-@mixin linear-gradient($direction, $colors...) {
-    background-image: linear-gradient($direction, $colors...);
+    @include respond-to(lg) {
+        padding: {
+            left: 6rem;
+            right: 6rem;
+        }
+    }
 }
