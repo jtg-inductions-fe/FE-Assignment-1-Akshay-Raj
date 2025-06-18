@@ -35,6 +35,22 @@ $color-warning: #ffbc11;
 $font-primary: 'Circular Std', sans-serif;
 $font-secondary: 'Inter', sans-serif;
 
+/* Font sizes */
+$text-sm: 0.875rem;
+$text-base: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.25rem;
+$text-2xl: 1.5rem;
+$text-3xl: 1.875rem;
+$text-4xl: 2.5rem;
+$text-5xl: 3rem;
+$text-6xl: 3.5rem;
+$text-7xl: 4.5rem;
+
+/* Line heights */
+$lh-tight: 1.2;
+$lh-normal: 1.6;
+
 /* Breakpoints for media query */
 $breakpoints: (
     sm: 0,

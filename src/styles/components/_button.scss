@@ -9,8 +9,10 @@
 @use '../base/typography' as *;
 
 .btn {
-    @include text-btn;
-
+    font-size: $text-sm;
+    font-weight: bold;
+    line-height: $lh-normal;
+    text-align: center;
     padding: 1.1em 2.25em;
     background: transparent;
     cursor: pointer;
