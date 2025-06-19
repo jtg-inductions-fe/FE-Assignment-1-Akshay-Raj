@@ -78,12 +78,12 @@
         }
 
         @include respond-to(lg) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.3rem;
+
             > :last-child {
                 display: none;
             }
-
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.3rem;
         }
     }
 

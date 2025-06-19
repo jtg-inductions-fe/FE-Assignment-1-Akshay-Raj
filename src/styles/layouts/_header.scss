@@ -170,10 +170,7 @@
             font-size: $text-sm;
         }
 
-        &--active {
-            color: $color-text-primary;
-        }
-
+        &--active,
         &:hover {
             color: $color-text-primary;
         }
