@@ -51,19 +51,8 @@
         }
     }
 
-    &__overline {
-        @include respond-to(md) {
-            font-size: 1.43rem;
-        }
-    }
-
     &__title {
-        @include respond-to(md) {
-            font-size: $text-4xl;
-        }
-
         @include respond-to(lg) {
-            font-size: 2.75rem;
             text-align: start;
         }
     }

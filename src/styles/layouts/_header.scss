@@ -162,14 +162,6 @@
     &__link {
         transition: color 0.3s ease;
 
-        @include respond-to(md) {
-            font-size: $text-base;
-        }
-
-        @include respond-to(lg) {
-            font-size: $text-sm;
-        }
-
         &--active,
         &:hover {
             color: $color-text-primary;

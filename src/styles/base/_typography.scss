@@ -33,6 +33,14 @@ h3 {
 
     font-size: 2rem;
     text-align: center;
+
+    @include respond-to(md) {
+        font-size: $text-4xl;
+    }
+
+    @include respond-to(lg) {
+        font-size: 2.75rem;
+    }
 }
 
 h4 {
@@ -54,6 +62,14 @@ h5 {
     font-weight: bold;
     line-height: $lh-tight;
     color: $color-text-tertiary;
+
+    @include respond-to(md) {
+        font-size: $text-base;
+    }
+
+    @include respond-to(lg) {
+        font-size: $text-sm;
+    }
 }
 
 .text-body {
@@ -62,6 +78,10 @@ h5 {
     font-family: $font-secondary;
     line-height: $lh-normal;
     color: $color-text-tertiary;
+
+    @include respond-to(md) {
+        font-size: $text-lg;
+    }
 }
 
 .text-overline {
@@ -72,4 +92,8 @@ h5 {
     line-height: $lh-tight;
     letter-spacing: calc(1rem * 0.2);
     color: $color-secondary;
+
+    @include respond-to(md) {
+        font-size: 1.43rem;
+    }
 }

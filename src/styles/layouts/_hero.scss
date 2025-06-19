@@ -119,7 +119,6 @@
         margin-top: 1.5rem;
 
         @include respond-to(md) {
-            font-size: $text-lg;
             margin-top: 2.68rem;
             max-width: 26rem;
         }
