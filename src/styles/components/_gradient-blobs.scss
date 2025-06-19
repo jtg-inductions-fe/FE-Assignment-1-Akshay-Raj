@@ -1,0 +1,45 @@
+/**
+ * Gradient Blobs Styles - _gradient-blobs.scss
+ *
+ * This file defines the styles for gradient blob elements,
+ * including variations and related styles.
+ */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.gradient-blob-hero {
+    --hero-blob-size: 30rem;
+    --hero-blob-top: -6rem;
+    --hero-blob-left: -10rem;
+    --hero-blob-blur-amount: 100px;
+    --hero-blob-opacity: 0.4;
+
+    position: absolute;
+    top: var(--hero-blob-top);
+    left: var(--hero-blob-left);
+    z-index: -1;
+    height: var(--hero-blob-size);
+    width: var(--hero-blob-size);
+    border-radius: 50%;
+    filter: blur(var(--hero-blob-blur-amount));
+    background: radial-gradient(
+        circle at center,
+        rgba($color-orange, var(--hero-blob-opacity)),
+        transparent
+    );
+
+    @include respond-to(md) {
+        --hero-blob-size: 35rem;
+        --hero-blob-top: -10rem;
+        --hero-blob-left: -10rem;
+        --hero-blob-opacity: 0.4;
+    }
+
+    @include respond-to(lg) {
+        --hero-blob-size: 50rem;
+        --hero-blob-top: -8rem;
+        --hero-blob-left: -15rem;
+        --hero-blob-opacity: 0.3;
+    }
+}

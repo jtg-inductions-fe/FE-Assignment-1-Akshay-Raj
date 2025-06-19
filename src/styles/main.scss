@@ -1,1 +1,26 @@
-// TODO: Add styles as per the requirement
+/**
+ * Main - _main.scss
+ *
+ * This is the main entry point for all styles.
+ * It imports all necessary partials to compile out to final CSS.
+ */
+
+/* Abstracts - Variables, mixins and functions */
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+/* Base - Basic styling (reset, typography) */
+@use 'base/fonts';
+@use 'base/reset';
+@use 'base/utilities';
+@use 'base/typography';
+
+/* Components - Specific UI elements */
+@use 'components/button';
+@use 'components/gradient-blobs';
+
+/* Layouts - Structure templates */
+@use 'layouts/header';
+
+/* Vendor - Third-party libraries and frameworks */
+@use 'vendor/icomoon';

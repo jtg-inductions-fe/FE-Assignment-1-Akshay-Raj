@@ -1,0 +1,66 @@
+/**
+ * Mixins - _mixins.scss
+ *
+ * This file defines reusable mixins for common styling patterns,
+ * including responsive sizing and section spacing.
+ */
+
+@use './variables' as *;
+
+/**
+ * Creates height and width properties.
+ *
+ * @param {Keyword | Length} $size - The size value. Use `full` for 100%.
+ */
+@mixin size($size) {
+    @if $size == full {
+        $size: 100%;
+    }
+
+    height: $size;
+    width: $size;
+}
+
+/**
+ * Creates a media query based on the defined breakpoints.
+ *
+ * @param {String} $size - The breakpoint size (sm, md, lg).
+ */
+@mixin respond-to($size) {
+    $breakpoint: map-get($breakpoints, $size);
+
+    @if $breakpoint != null {
+        @media screen and (min-width: $breakpoint) {
+            @content;
+        }
+    } @else {
+        @warn 'Invalid size `#{$size}`. Please use one of the available sizes #{map-keys($breakpoints)}';
+    }
+}
+
+/**
+ * Adds consistent left and right padding to elements for
+ * section spacing based on different breakpoints.
+ */
+@mixin section-spacing {
+    @include respond-to(sm) {
+        padding: {
+            left: 1rem;
+            right: 1rem;
+        }
+    }
+
+    @include respond-to(md) {
+        padding: {
+            left: 4rem;
+            right: 4rem;
+        }
+    }
+
+    @include respond-to(lg) {
+        padding: {
+            left: 7.5rem;
+            right: 7.5rem;
+        }
+    }
+}

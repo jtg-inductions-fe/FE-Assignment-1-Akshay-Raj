@@ -1,0 +1,19 @@
+/**
+ * Utilities - _utilities.scss
+ *
+ * This file defines utility classes for common styling patterns and layouts.
+ */
+
+@use '../abstracts/mixins' as *;
+
+.size-full {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+}
