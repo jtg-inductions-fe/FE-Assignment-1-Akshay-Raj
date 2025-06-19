@@ -8,38 +8,60 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.gradient-blob-hero {
-    --hero-blob-size: 30rem;
-    --hero-blob-top: -6rem;
-    --hero-blob-left: -10rem;
-    --hero-blob-blur-amount: 100px;
-    --hero-blob-opacity: 0.4;
+%gradient-blob-base {
+    --blob-size: 30rem;
+    --blob-top: -6rem;
+    --blob-left: -10rem;
+    --blob-blur-amount: 100px;
+    --blob-opacity: 0.4;
+    --blob-color: #{$color-orange};
 
     position: absolute;
-    top: var(--hero-blob-top);
-    left: var(--hero-blob-left);
+    top: var(--blob-top);
+    left: var(--blob-left);
     z-index: -1;
-    height: var(--hero-blob-size);
-    width: var(--hero-blob-size);
+    height: var(--blob-size);
+    width: var(--blob-size);
+    opacity: var(--blob-opacity);
     border-radius: 50%;
-    filter: blur(var(--hero-blob-blur-amount));
+    pointer-events: none;
+    filter: blur(var(--blob-blur-amount));
     background: radial-gradient(
         circle at center,
-        rgba($color-orange, var(--hero-blob-opacity)),
+        var(--blob-color),
         transparent
     );
+}
+
+.gradient-blob-hero {
+    @extend %gradient-blob-base;
 
     @include respond-to(md) {
-        --hero-blob-size: 35rem;
-        --hero-blob-top: -10rem;
-        --hero-blob-left: -10rem;
-        --hero-blob-opacity: 0.4;
+        --blob-size: 35rem;
+        --blob-top: -10rem;
+        --blob-left: -10rem;
+        --blob-opacity: 0.4;
     }
 
     @include respond-to(lg) {
-        --hero-blob-size: 50rem;
-        --hero-blob-top: -8rem;
-        --hero-blob-left: -15rem;
-        --hero-blob-opacity: 0.3;
+        --blob-size: 50rem;
+        --blob-top: -8rem;
+        --blob-left: -15rem;
+        --blob-opacity: 0.3;
+    }
+}
+
+.gradient-blob-services {
+    @extend %gradient-blob-base;
+
+    display: none;
+
+    --blob-left: 88%;
+    --blob-color: #{$color-yellow};
+
+    @include respond-to(md) {
+        display: block;
+
+        --blob-top: -15rem;
     }
 }
