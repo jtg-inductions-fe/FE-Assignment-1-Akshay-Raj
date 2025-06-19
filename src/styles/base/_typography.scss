@@ -104,7 +104,4 @@ h5 {
     font-family: $font-secondary;
     line-height: $lh-normal;
     color: $color-text-tertiary;
-
-    @include respond-to(md) {
-    }
 }
