@@ -32,12 +32,10 @@ function toggleNavMenu() {
     toggleMenuIcon.classList.toggle('icon-menu--open', !isMenuOpen);
     toggleMenuIcon.classList.toggle('icon-menu--close', isMenuOpen);
 
-    linksContainer.setAttribute('aria-hidden', (!isMenuOpen).toString());
     linksContainer.classList.toggle(
         'header__links-container--open',
         isMenuOpen,
     );
-    actionsContainer.setAttribute('aria-hidden', (!isMenuOpen).toString());
     actionsContainer.classList.toggle('header__actions--open', isMenuOpen);
 }
 
@@ -76,7 +74,8 @@ window.addEventListener(
         const pageY = window.scrollY;
         headerContainer.classList.toggle(
             'header__container--scrolled-up',
-            pageY >= headerContainer.clientHeight * constants.HEADER_HEIGHT_RATIO,
+            pageY >=
+                headerContainer.clientHeight * constants.HEADER_HEIGHT_RATIO,
         );
     }, 30),
 );
