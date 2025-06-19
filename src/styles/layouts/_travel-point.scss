@@ -1,0 +1,149 @@
+/**
+ * Travel Point Styles - _travel-point.scss
+ *
+ * This file defines the styles for travel point section,
+ * including layout and responsiveness.
+ */
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.travel {
+    position: relative;
+    width: 100%;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: {
+            top: 2rem;
+            bottom: 2rem;
+        }
+
+        @include section-spacing;
+
+        @include respond-to(md) {
+            padding: {
+                top: 4rem;
+                bottom: 4rem;
+            }
+        }
+
+        @include respond-to(lg) {
+            flex-direction: row;
+            padding: {
+                top: 1rem;
+                bottom: 1rem;
+                left: 0;
+            }
+        }
+    }
+
+    &__image {
+        width: 100%;
+        padding-top: 2rem;
+
+        @include respond-to(lg) {
+            transform: translateY(-1.5rem);
+        }
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    &__text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 0;
+
+        @include respond-to(md) {
+            padding: 2.5rem 0;
+        }
+
+        @include respond-to(lg) {
+            align-items: flex-start;
+            flex-basis: 51%;
+        }
+    }
+
+    &__title {
+        @include respond-to(lg) {
+            text-align: start;
+        }
+    }
+
+    &__subtitle {
+        margin-top: 1rem;
+        text-align: center;
+
+        @include respond-to(lg) {
+            text-align: start;
+        }
+    }
+
+    &__cards-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1.5rem;
+        max-width: 50rem;
+
+        @include respond-to(md) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        width: 100%;
+        outline: 1px solid $color-outline;
+        border-radius: 20px;
+    }
+
+    &__card-title {
+        color: $color-orange;
+    }
+
+    &__card-description {
+        color: $color-text-primary;
+        font-size: $text-lg;
+        line-height: $lh-normal;
+        text-align: center;
+    }
+
+    &__floating-image {
+        display: none;
+
+        @include respond-to(lg) {
+            display: block;
+            position: absolute;
+            width: 16rem;
+            top: -7rem;
+            right: -7.5rem;
+            z-index: 1;
+        }
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+}
