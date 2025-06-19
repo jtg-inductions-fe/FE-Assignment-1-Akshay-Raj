@@ -17,10 +17,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding: {
-            top: 7rem;
-            bottom: 3rem;
-        }
+        padding-top: 7rem;
 
         @include section-spacing;
 
@@ -207,7 +204,7 @@
             display: block;
             position: absolute;
             left: 2rem;
-            bottom: 18.5rem;
+            bottom: 16rem;
             height: 12rem;
             aspect-ratio: 19/56;
             background: url('/assets/triangles.svg') no-repeat;
@@ -216,7 +213,7 @@
 
         @include respond-to(lg) {
             position: absolute;
-            bottom: 5rem;
+            bottom: 2rem;
         }
     }
 }
