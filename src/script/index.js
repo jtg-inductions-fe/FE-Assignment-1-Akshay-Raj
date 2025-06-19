@@ -42,19 +42,43 @@ function toggleNavMenu() {
 }
 
 /**
+ * Debounce the function calls.
+ *
+ *  Debounces a function, delaying its execution until after a specified time
+ *  has elapsed since the last time the debounced function was invoked.
+ *
+ * @param {Function} func The function to debounce.
+ * @param {number} delay The delay in milliseconds before the function is executed.
+ * @returns {Function} A debounced version of that function
+ */
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+/**
  * Scroll event listener
  *
  * Listens for the window scroll event and
  * adjusts the header vertical spacing.
  *
+ * @returns {void}
  */
-window.addEventListener('scroll', () => {
-    if (!headerContainer) return;
-    const pageY = window.scrollY;
-    headerContainer.classList.toggle(
-        'header__container--scrolled-up',
-        pageY >= headerContainer.clientHeight * constants.HEADER_HEIGHT_RATIO,
-    );
-});
+window.addEventListener(
+    'scroll',
+    debounce(() => {
+        if (!headerContainer) return;
+        const pageY = window.scrollY;
+        headerContainer.classList.toggle(
+            'header__container--scrolled-up',
+            pageY >= headerContainer.clientHeight * constants.HEADER_HEIGHT_RATIO,
+        );
+    }, 30),
+);
 
 btnToggleMenu?.addEventListener('click', toggleNavMenu);
