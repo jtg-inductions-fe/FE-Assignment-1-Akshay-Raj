@@ -78,6 +78,7 @@
             text-align: start;
             align-items: flex-start;
             flex-basis: 50%;
+            padding-top: 3.5rem;
         }
     }
 
@@ -179,7 +180,7 @@
         @include respond-to(lg) {
             justify-content: space-between;
             max-width: 100%;
-            padding: 1rem 0;
+            padding: 2.5rem 0;
         }
     }
 
@@ -194,6 +195,7 @@
             @include size(full);
 
             object-fit: contain;
+            user-select: none;
         }
     }
 
@@ -213,7 +215,7 @@
 
         @include respond-to(lg) {
             position: absolute;
-            bottom: 2rem;
+            bottom: 3rem;
         }
     }
 }
