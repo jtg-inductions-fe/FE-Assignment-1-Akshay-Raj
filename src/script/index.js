@@ -40,6 +40,13 @@ function toggleNavMenu() {
     actionsContainer.classList.toggle('header__actions--open', isMenuOpen);
 }
 
+/**
+ * Scroll event listener
+ *
+ * Listens for the window scroll event and
+ * adjusts the header vertical spacing.
+ *
+ */
 window.addEventListener('scroll', () => {
     if (!headerContainer) return;
     const pageY = window.scrollY;
