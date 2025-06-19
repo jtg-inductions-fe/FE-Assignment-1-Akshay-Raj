@@ -32,6 +32,7 @@ h3 {
     @include font-base;
 
     font-size: 2rem;
+    text-align: center;
 }
 
 h4 {
@@ -43,7 +44,7 @@ h4 {
 h5 {
     @include font-base;
 
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 
 .text-nav-link {
@@ -61,4 +62,14 @@ h5 {
     font-family: $font-secondary;
     line-height: $lh-normal;
     color: $color-text-tertiary;
+}
+
+.text-overline {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: $lh-tight;
+    letter-spacing: calc(1rem * 0.2);
+    color: $color-secondary;
 }
