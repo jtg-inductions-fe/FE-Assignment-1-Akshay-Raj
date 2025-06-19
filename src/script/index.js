@@ -1,4 +1,5 @@
 import '../styles/main.scss';
+import * as constants from './constants.js';
 
 const headerContainer = document.querySelector('.header__container');
 const btnToggleMenu = document.getElementById('btn-toggle-menu');
@@ -52,7 +53,7 @@ window.addEventListener('scroll', () => {
     const pageY = window.scrollY;
     headerContainer.classList.toggle(
         'header__container--scrolled-up',
-        pageY >= headerContainer.clientHeight * 0.5,
+        pageY >= headerContainer.clientHeight * constants.HEADER_HEIGHT_RATIO,
     );
 });
 
