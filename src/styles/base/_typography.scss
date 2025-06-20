@@ -97,3 +97,14 @@ h5 {
         font-size: 1.43rem;
     }
 }
+
+.text-card-description {
+    font-size: $text-lg;
+    font-weight: normal;
+    font-family: $font-secondary;
+    line-height: $lh-normal;
+    color: $color-text-tertiary;
+
+    @include respond-to(md) {
+    }
+}

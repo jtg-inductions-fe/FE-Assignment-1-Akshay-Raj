@@ -23,10 +23,10 @@ $color-shadow: rgb(0 0 0 / 5%);
 $color-indicator-active: $color-secondary;
 $color-indicator-inactive: rgba($color-text-primary, 0.05);
 
-$color-newsletter-card: #facd4914;
-
 $color-orange: #ff5722;
 $color-yellow: #facd49;
+
+$color-newsletter-card: rgba($color-yellow, 0.08);
 
 $color-error: #b3261e;
 $color-warning: #ffbc11;
