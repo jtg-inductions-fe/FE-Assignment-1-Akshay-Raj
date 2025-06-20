@@ -33,29 +33,29 @@
 
         @include respond-to(sm) {
             padding: {
-                top: 2.5rem;
-                bottom: 2.5rem;
+                top: 40px;
+                bottom: 40px;
             }
         }
 
         @include respond-to(md) {
             padding: {
-                top: 2rem;
-                bottom: 2rem;
+                top: 32px;
+                bottom: 32px;
             }
         }
 
         @include respond-to(lg) {
             padding: {
-                top: 4rem;
-                bottom: 4rem;
+                top: 64px;
+                bottom: 64px;
             }
         }
 
         &--scrolled-up {
             padding: {
-                top: 1rem;
-                bottom: 1rem;
+                top: 16px;
+                bottom: 16px;
             }
         }
     }
@@ -128,8 +128,8 @@
         right: 1rem;
         display: none;
         flex-direction: column;
-        gap: 0.9rem;
-        padding: 2rem;
+        gap: 14px;
+        padding: 32px;
         width: 100%;
         max-width: 250px;
         border-radius: 15px;
@@ -150,7 +150,7 @@
             inset: 0;
             display: flex;
             flex-direction: row;
-            gap: 4rem;
+            gap: 64px;
             padding: 0;
             max-width: fit-content;
             border-radius: 0;
@@ -174,12 +174,12 @@
         right: 1rem;
         display: none;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 8px;
         width: 100%;
         max-width: 250px;
-        padding: 2rem;
+        padding: 32px;
         padding: {
-            top: 1rem;
+            top: 16px;
         }
 
         border-radius: 0 0 0 15px;
