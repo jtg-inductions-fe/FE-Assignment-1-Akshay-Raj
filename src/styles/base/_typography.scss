@@ -18,6 +18,14 @@ h1 {
     @include font-base;
 
     font-size: 2.5rem;
+
+    @include respond-to(md) {
+        font-size: $text-6xl;
+    }
+
+    @include respond-to(lg) {
+        font-size: 4.3rem;
+    }
 }
 
 h3 {
@@ -48,7 +56,7 @@ h5 {
 }
 
 .text-body {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: normal;
     font-family: $font-secondary;
     line-height: $lh-normal;

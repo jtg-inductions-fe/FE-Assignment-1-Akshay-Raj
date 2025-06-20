@@ -1,0 +1,217 @@
+/**
+ * Hero Styles - _hero.scss
+ *
+ * This file defines the styles for the hero section,
+ * including layout, and responsive behavior.
+ */
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.hero {
+    width: 100%;
+
+    &__container {
+        position: relative; /* To bound gradient blob and other non-static elements to the container */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 7rem;
+
+        @include section-spacing;
+
+        @include respond-to(md) {
+            padding-top: 5rem;
+        }
+
+        @include respond-to(lg) {
+            padding-top: 6.25rem;
+        }
+    }
+
+    &__content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 1.75rem;
+
+        @include respond-to(md) {
+            padding: 4rem;
+        }
+
+        @include respond-to(lg) {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    &__image {
+        width: 100%;
+        padding-top: 2.1rem;
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    &__text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        @include respond-to(md) {
+            padding: 2rem 0;
+        }
+
+        @include respond-to(lg) {
+            text-align: start;
+            align-items: flex-start;
+            flex-basis: 50%;
+            padding-top: 3.5rem;
+        }
+    }
+
+    &__overline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2rem;
+        color: $color-secondary;
+        border-radius: 2rem;
+        box-shadow: 0 5px 15px 0 $color-shadow;
+
+        p {
+            font-size: 0.875rem;
+            margin-bottom: -0.4rem;
+        }
+
+        i {
+            font-size: 1.25rem;
+        }
+    }
+
+    &__title {
+        margin-top: 1rem;
+
+        @include respond-to(md) {
+            max-width: 38rem;
+            margin-top: 2.68rem;
+        }
+
+        span {
+            color: $color-secondary;
+        }
+    }
+
+    &__subtitle {
+        margin-top: 1.5rem;
+
+        @include respond-to(md) {
+            font-size: $text-lg;
+            margin-top: 2.68rem;
+            max-width: 26rem;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 1.875rem;
+        width: 100%;
+
+        @include respond-to(md) {
+            flex-direction: row;
+            margin-top: 2.68rem;
+        }
+
+        @include respond-to(lg) {
+            justify-content: flex-start;
+            margin-top: 3.5rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 1.4rem 2rem;
+
+            @include respond-to(md) {
+                width: auto;
+                padding: 1rem 2rem;
+            }
+        }
+
+        .icon-play {
+            font-size: 1.4rem;
+            color: $color-primary;
+        }
+    }
+
+    &__clients-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        width: 100%;
+        padding: 4rem 0;
+
+        @include respond-to(md) {
+            max-width: 640px;
+        }
+
+        @include respond-to(lg) {
+            justify-content: space-between;
+            max-width: 100%;
+            padding: 2.5rem 0;
+        }
+    }
+
+    &__client {
+        height: 1.25rem;
+
+        @include respond-to(md) {
+            height: 2rem;
+        }
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    .triangle-vector {
+        display: none;
+
+        @include respond-to(md) {
+            display: block;
+            position: absolute;
+            left: 2rem;
+            bottom: 16rem;
+            height: 12rem;
+            aspect-ratio: 19/56;
+            background: url('./assets/triangles.svg') no-repeat;
+            background-size: contain;
+        }
+
+        @include respond-to(lg) {
+            position: absolute;
+            bottom: 3rem;
+        }
+    }
+}
