@@ -106,13 +106,8 @@
         margin-top: 1rem;
 
         @include respond-to(md) {
-            font-size: $text-6xl;
-            max-width: 18ch;
+            max-width: 38rem;
             margin-top: 2.68rem;
-        }
-
-        @include respond-to(lg) {
-            font-size: 4.3rem;
         }
 
         span {
@@ -126,7 +121,7 @@
         @include respond-to(md) {
             font-size: $text-lg;
             margin-top: 2.68rem;
-            max-width: 42ch;
+            max-width: 26rem;
         }
     }
 
@@ -150,10 +145,6 @@
         }
 
         button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
             width: 100%;
             padding: 1.4rem 2rem;
 
@@ -161,6 +152,11 @@
                 width: auto;
                 padding: 1rem 2rem;
             }
+        }
+
+        .icon-play {
+            font-size: 1.4rem;
+            color: $color-primary;
         }
     }
 
