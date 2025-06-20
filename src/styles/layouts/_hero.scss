@@ -12,7 +12,7 @@
     width: 100%;
 
     &__container {
-        position: relative;
+        position: relative; /* To bound gradient blob and other non-static elements to the container */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
