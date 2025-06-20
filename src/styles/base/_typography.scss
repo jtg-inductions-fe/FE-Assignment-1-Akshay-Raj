@@ -28,10 +28,34 @@ h1 {
     }
 }
 
+h2 {
+    @include font-base;
+
+    font-size: 2rem;
+    text-align: center;
+
+    @include respond-to(md) {
+        font-size: $text-4xl;
+    }
+
+    @include respond-to(lg) {
+        font-size: 2.75rem;
+    }
+}
+
 h3 {
     @include font-base;
 
     font-size: 2rem;
+    text-align: center;
+
+    @include respond-to(md) {
+        font-size: 2.25rem;
+    }
+
+    @include respond-to(lg) {
+        font-size: 2.5rem;
+    }
 }
 
 h4 {
@@ -43,7 +67,7 @@ h4 {
 h5 {
     @include font-base;
 
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 
 .text-nav-link {
@@ -53,10 +77,44 @@ h5 {
     font-weight: bold;
     line-height: $lh-tight;
     color: $color-text-tertiary;
+
+    @include respond-to(md) {
+        font-size: $text-base;
+    }
+
+    @include respond-to(lg) {
+        font-size: $text-sm;
+    }
 }
 
 .text-body {
     font-size: 1rem;
+    font-weight: normal;
+    font-family: $font-secondary;
+    line-height: $lh-normal;
+    color: $color-text-tertiary;
+
+    @include respond-to(md) {
+        font-size: $text-lg;
+    }
+}
+
+.text-overline {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: $lh-tight;
+    letter-spacing: calc(1rem * 0.2);
+    color: $color-secondary;
+
+    @include respond-to(md) {
+        font-size: 1.43rem;
+    }
+}
+
+.text-card-description {
+    font-size: $text-lg;
     font-weight: normal;
     font-family: $font-secondary;
     line-height: $lh-normal;

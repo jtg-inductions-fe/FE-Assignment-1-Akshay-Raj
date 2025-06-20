@@ -1,0 +1,135 @@
+/**
+ * Services Styles - _services.scss
+ *
+ * This file defines styles for the services section,
+ * including layout and responsiveness.
+ */
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.services {
+    width: 100%;
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        @include section-spacing;
+
+        @include respond-to(md) {
+            padding: {
+                top: 2rem;
+                bottom: 2rem;
+            }
+        }
+
+        @include respond-to(lg) {
+            flex-direction: row;
+            padding: {
+                top: 6rem;
+                bottom: 6rem;
+            }
+        }
+    }
+
+    &__text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        @include respond-to(md) {
+            padding: 2rem 0;
+        }
+
+        @include respond-to(lg) {
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        @include respond-to(lg) {
+            text-align: start;
+        }
+    }
+
+    &__cards-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @include respond-to(md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include respond-to(lg) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.3rem;
+
+            > :last-child {
+                display: none;
+            }
+        }
+    }
+
+    &__card {
+        max-width: 40rem;
+        text-align: center;
+        transition: box-shadow 0.3s ease-in-out;
+
+        &:hover {
+            outline: none;
+            box-shadow: 0 40px 80px 0 $color-shadow;
+        }
+
+        &:focus {
+            outline: 2px solid $color-primary;
+            outline-offset: 2px;
+        }
+
+        @include respond-to(md) {
+            gap: 4rem;
+            padding: 4rem;
+            padding: {
+                bottom: 2rem;
+            }
+        }
+
+        @include respond-to(lg) {
+            padding: 4rem;
+        }
+    }
+
+    &__card-icon {
+        @include size(4rem);
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    &__card-text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+
+        @include respond-to(lg) {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    &__card-title {
+        @include respond-to(md) {
+            font-size: 1.75rem;
+        }
+    }
+}
