@@ -70,6 +70,12 @@ h5 {
     font-size: 1.5rem;
 }
 
+h6 {
+    @include font-base;
+
+    font-size: 1.43rem;
+}
+
 .text-nav-link {
     @include font-base;
 
