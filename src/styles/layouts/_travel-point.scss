@@ -5,8 +5,8 @@
  * including layout and responsiveness.
  */
 
-@use '../abstracts/mixins' as *;
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .travel {
     position: relative;
