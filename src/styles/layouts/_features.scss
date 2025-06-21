@@ -1,0 +1,140 @@
+/**
+ * Features Styles - _features.scss
+ *
+ * This file defines the styles for the features section,
+ * including layout and responsiveness.
+ */
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.features {
+    width: 100%;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include section-spacing;
+
+        @include respond-to(lg) {
+            flex-direction: row-reverse;
+            align-items: flex-start;
+            padding-right: 0;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        padding: 32px;
+
+        @include respond-to(md) {
+            padding: 24px 16px;
+            max-width: 690px;
+        }
+
+        @include respond-to(lg) {
+            padding: 64px 16px;
+        }
+
+        img {
+            @include size(full);
+
+            object-fit: contain;
+            user-select: none;
+        }
+    }
+
+    &__content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 32px;
+    }
+
+    &__text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        margin-top: 72px;
+
+        @include respond-to(md) {
+            margin-top: 56px;
+        }
+
+        @include respond-to(lg) {
+            margin-top: 72px;
+            align-items: flex-start;
+            text-align: start;
+        }
+    }
+
+    &__subtitle {
+        margin-top: 16px;
+    }
+
+    &__cards-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 32px 0;
+
+        @include respond-to(md) {
+            gap: 4px;
+            padding: 64px 0;
+        }
+
+        @include respond-to(lg) {
+            margin-top: 24px;
+        }
+    }
+
+    &__card {
+        align-items: flex-start;
+        outline: none;
+
+        @include respond-to(md) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        &:hover {
+            outline: 1px solid $color-outline;
+        }
+    }
+
+    &__card-icon {
+        display: grid;
+        place-content: center;
+        border-radius: 30px;
+        padding: 24px;
+
+        &--orange {
+            background: $color-orange;
+        }
+
+        &--yellow {
+            background: $color-yellow;
+        }
+
+        &--pink {
+            background: $color-secondary;
+        }
+
+        .icon {
+            color: $color-white;
+            font-size: 50px;
+        }
+    }
+
+    &__card-text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}

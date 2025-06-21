@@ -45,22 +45,22 @@
 @mixin section-spacing {
     @include respond-to(sm) {
         padding: {
-            left: 1rem;
-            right: 1rem;
+            left: 16px;
+            right: 16px;
         }
     }
 
     @include respond-to(md) {
         padding: {
-            left: 4rem;
-            right: 4rem;
+            left: 64px;
+            right: 64px;
         }
     }
 
     @include respond-to(lg) {
         padding: {
-            left: 7.5rem;
-            right: 7.5rem;
+            left: 120px;
+            right: 120px;
         }
     }
 }
