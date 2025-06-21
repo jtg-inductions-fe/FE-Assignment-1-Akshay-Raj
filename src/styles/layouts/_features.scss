@@ -30,12 +30,8 @@
         padding: 32px;
 
         @include respond-to(md) {
-            padding: 0;
-            max-width: 690px;
-        }
-
-        @include respond-to(md) {
             padding: 24px 16px;
+            max-width: 690px;
         }
 
         @include respond-to(lg) {
@@ -131,7 +127,7 @@
         }
 
         .icon {
-            color: #fff;
+            color: $color-white;
             font-size: 50px;
         }
     }
